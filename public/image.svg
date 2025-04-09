@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- Using two colors: #FF5722 (deep orange) and #263238 (dark blue-grey) -->
+  
+  <!-- Background -->
+  <rect x="0" y="0" width="500" height="500" fill="#FFFFFF"/>
+  
+  <!-- Main Logo Element: Combination of plate and map pin -->
+  <path d="M250 120 
+           C215 120, 190 145, 190 180 
+           C190 210, 210 240, 250 280 
+           C290 240, 310 210, 310 180 
+           C310 145, 285 120, 250 120 Z" 
+        fill="#FF5722"/>
+  
+  <circle cx="250" cy="180" r="45" fill="#FFFFFF"/>
+  <circle cx="250" cy="180" r="38" fill="#FFFFFF" stroke="#263238" stroke-width="3"/>
+  
+  <!-- Stylish Knife and Fork -->
+  <path d="M235 150 L235 210" stroke="#263238" stroke-width="5" stroke-linecap="round"/>
+  <path d="M225 150 L225 165" stroke="#263238" stroke-width="5" stroke-linecap="round"/>
+  <path d="M245 150 L245 165" stroke="#263238" stroke-width="5" stroke-linecap="round"/>
+  
+  <path d="M265 150 L265 210" stroke="#263238" stroke-width="5" stroke-linecap="round"/>
+  
+  <!-- Subtle shadow effect -->
+  <ellipse cx="250" cy="300" rx="100" ry="10" fill="#263238" fill-opacity="0.1"/>
+  
+  <!-- Stacked Typography -->
+  <text x="250" y="350" font-family="Arial, sans-serif" font-size="75" font-weight="bold" text-anchor="middle" fill="#263238">DINE</text>
+  <text x="250" y="425" font-family="Arial, sans-serif" font-size="75" font-weight="bold" text-anchor="middle" fill="#FF5722">SPOT</text>
+  
+  <!-- Tagline -->
+  <text x="250" y="465" font-family="Arial, sans-serif" font-size="24" font-style="italic" text-anchor="middle" fill="#263238">find it. taste it.</text>
+</svg>
