@@ -10,9 +10,7 @@ export const searchRestaurants = async (req, res) => {
 
   try {
     let overpassQuery = '';
-
     if (searchLocation === 'hyderabad') {
-      // ✅ Use around query instead of static box for more accurate results
       overpassQuery = `
         [out:json];
         node["amenity"="restaurant"](around:7000,17.3850,78.4867);
@@ -20,7 +18,7 @@ export const searchRestaurants = async (req, res) => {
       `;
     } else {
       const geoRes = await axios.get('https://nominatim.openstreetmap.org/search', {
-        params: { q: searchLocation, format: 'json', limit: 1 },
+        params: { q: searchLocation, format: 'json'},
         headers: { 'User-Agent': 'DineSpot/1.0' },
       });
 
@@ -112,21 +110,12 @@ export const searchRestaurants = async (req, res) => {
     console.error('Unknown error:', error);
   }
 
-  res.status(500).json({ error: 'Failed to fetch restaurants' });
+  res.status(500).json({ error: 'Failed to fetch restaurants' ,err:error});
 }
 
-   console.log("🔍 Location received:", searchLocation);
-console.log("📍 Final Overpass Query:", overpassQuery);
-
-// Before Overpass API call
-console.log("🌐 Calling Overpass API...");
-
-// Before Unsplash API call (inside map loop)
-console.log("🖼️ Fetching image for:", name);
 
 };
 
-// ✅ Get a restaurant by ID (for detailed view)
 export const getRestaurantById = async (req, res) => {
   try {
     const restaurant = await Restaurant.findById(req.params.id);

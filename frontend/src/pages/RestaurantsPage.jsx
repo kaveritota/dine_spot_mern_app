@@ -20,6 +20,7 @@ const RestaurantsPage = () => {
         const response = await fetch(
           `https://dine-spot-mern-app.onrender.com/api/restaurants/search?location=${encodeURIComponent(location)}`
         );
+        console.log(response,"response")
 
         if (!response.ok) throw new Error('Failed to fetch');
 
@@ -45,7 +46,7 @@ const RestaurantsPage = () => {
         setRestaurants(validRestaurants);
       } catch (err) {
         console.error('Error fetching restaurants:', err);
-        alert('Something went wrong. Please try again.');
+        // alert('Something went wrong. Please try again.');
         navigate('/home');
       } finally {
         setLoading(false);
