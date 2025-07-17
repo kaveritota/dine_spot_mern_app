@@ -1,8 +1,10 @@
+ import https from 'https';
  import axios from 'axios';
 import dotenv from 'dotenv';
 import Restaurant from '../models/restaurant.js'; // ✅ Ensure the model file is named correctly
 
 dotenv.config();
+axios.defaults.httpsAgent = new https.Agent({ family: 4 });
 
 export const searchRestaurants = async (req, res) => {
   const { location } = req.query;
@@ -60,7 +62,7 @@ for (const url of overpassURLs) {
       },
       timeout: 15000,
     });
-    break; // exit loop on success
+    break;  
   } catch (err) {
     console.warn(`Overpass mirror failed: ${url}`, err.code);
   }
