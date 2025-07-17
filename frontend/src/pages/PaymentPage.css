@@ -1,0 +1,124 @@
+ /* PaymentPage.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Full screen fixed layout */
+ .payment-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: url('../assets/fbg1.png') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Payment Card Box */
+.payment-container {
+  background: #ffffff;
+  padding: 2.5rem;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Smooth fade */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.payment-container h2 {
+  font-size: 1.7rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #111827;
+}
+
+.payment-details p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  color: #374151;
+}
+
+.payment-details strong {
+  color: #111827;
+}
+
+/* Primary Button */
+.pay-btn {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  border: 2px solid #cd5d0dff;
+  border-radius: 8px;
+  background-color:white;
+  color:#cd5d0dff;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.pay-btn:hover {
+  background-color: #cd5d0dff;
+  color:white;
+}
+
+/* Payment Method Section */
+.payment-methods {
+  margin-top: 1rem;
+}
+
+.payment-methods h3 {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: #111827;
+  text-align: center;
+}
+
+.method-btn {
+  width: 100%;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border-radius: 8px;
+  border: 2px solid #cd5d0dff;
+  background-color: #f9fafb;
+  color:#cd5d0dff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.method-btn:hover {
+  background-color:#cd5d0dff;
+  color:white;
+}
+
+.method-btn.selected {
+   
+  background-color:#cd5d0dff ;
+  font-weight: bold;
+  color:white;
+}
+
+.pay-btn.confirm {
+  background-color: #101012;
+  margin-top: 1rem;
+  color:white;
+  border:none;
+}
+
+ 
