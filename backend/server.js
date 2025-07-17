@@ -19,6 +19,32 @@ app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/bookings', bookingRoutes);
 
 app.get('/', (req, res) => res.send('Welcome to DineSpot backend'));
+router.get('/test-overpass', async (req, res) => {
+  try {
+    const query = `
+      [out:json];
+      node["amenity"="restaurant"](around:1000,17.3850,78.4867);
+      out;
+    `;
+
+    const response = await axios.post(
+      'https://overpass-api.de/api/interpreter',
+      query,
+      {
+        headers: {
+          'Content-Type': 'text/plain',
+          'User-Agent': 'DineSpot/1.0'
+        }
+      }
+    );
+
+    res.json(response.data);
+  } catch (err) {
+    console.error('Test Overpass API Error:', err.message);
+    res.status(500).json({ error: 'Overpass test failed' });
+  }
+});
+
 
 mongoose
   .connect(process.env.MONGOURI, {

@@ -75,7 +75,7 @@ export const searchRestaurants = async (req, res) => {
           console.warn(`Image fetch failed for ${name}`, imgErr.message);
         }
 
-        // ✅ Use correct model name: Restaurant
+        //  Use correct model name: Restaurant
         let existing = await Restaurant.findOne({ osmId: place.id });
 
         if (!existing) {
@@ -98,10 +98,32 @@ export const searchRestaurants = async (req, res) => {
     );
 
     res.json(results);
-  } catch (error) {
-    console.error('OpenStreetMap API Error:', error.message);
-    res.status(500).json({ error: 'Failed to fetch restaurants' });
+   } catch (error) {
+  console.error('🔥 OpenStreetMap/Unsplash/Mongo Error 🔥');
+  console.error('Message:', error.message);
+  console.error('Stack:', error.stack);
+  
+  if (error.response) {
+    console.error('Error response status:', error.response.status);
+    console.error('Error response data:', error.response.data);
+  } else if (error.request) {
+    console.error('No response received:', error.request);
+  } else {
+    console.error('Unknown error:', error);
   }
+
+  res.status(500).json({ error: 'Failed to fetch restaurants' });
+}
+
+   console.log("🔍 Location received:", searchLocation);
+console.log("📍 Final Overpass Query:", overpassQuery);
+
+// Before Overpass API call
+console.log("🌐 Calling Overpass API...");
+
+// Before Unsplash API call (inside map loop)
+console.log("🖼️ Fetching image for:", name);
+
 };
 
 // ✅ Get a restaurant by ID (for detailed view)
@@ -118,7 +140,7 @@ export const getRestaurantById = async (req, res) => {
   }
 };
 
-// ✅ Add or update menu for a restaurant
+//  Add or update menu for a restaurant
 export const addMenu = async (req, res) => {
   const { restaurantId } = req.params;
   const { menu } = req.body;
