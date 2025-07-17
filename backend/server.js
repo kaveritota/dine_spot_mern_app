@@ -29,21 +29,21 @@ app.get('/test-overpass', async (req, res) => {
       out;
     `;
 
-    const response = await axios.post(
-      'https://overpass-api.de/api/interpreter',
-      query,
-      {
-        headers: {
-          'Content-Type': 'text/plain',
-          'User-Agent': 'DineSpot/1.0'
-        }
-      }
-    );
+    const response = await axios({
+      method: 'post',
+      url: 'https://overpass-api.de/api/interpreter',
+      headers: {
+        'Content-Type': 'text/plain',
+        'User-Agent': 'DineSpot/1.0'
+      },
+      data: query,
+      timeout: 15000
+    });
 
     res.json(response.data);
   } catch (err) {
-    console.error('Test Overpass API Error:', err.message);
-    res.status(500).json({ error: 'Overpass test failed' });
+    console.error('Test Overpass API Error:', err.response?.data || err.message || err);
+    res.status(500).json({ error: 'Overpass test failed', details: err.message });
   }
 });
 
