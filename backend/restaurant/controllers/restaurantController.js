@@ -34,17 +34,42 @@ export const searchRestaurants = async (req, res) => {
       `;
     }
 
-    // ✅ Add missing User-Agent header
-    const overpassRes = await axios.post(
-      'https://overpass-api.de/api/interpreter',
-      overpassQuery,
-      {
-        headers: {
-          'Content-Type': 'text/plain',
-          'User-Agent': 'DineSpot/1.0'
-        }
-      }
-    );
+    // const overpassRes = await axios.post(
+    //   'https://overpass-api.de/api/interpreter',
+    //   overpassQuery,
+    //   {
+    //     headers: {
+    //       'Content-Type': 'text/plain',
+    //       'User-Agent': 'DineSpot/1.0'
+    //     },
+    //     timeout:5000
+    //   }
+    // );
+    const overpassURLs = [
+  'https://lz4.overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter'
+];
+
+let overpassRes;
+for (const url of overpassURLs) {
+  try {
+    overpassRes = await axios.post(url, overpassQuery, {
+      headers: {
+        'Content-Type': 'text/plain',
+        'User-Agent': 'DineSpot/1.0'
+      },
+      timeout: 15000,
+    });
+    break; // exit loop on success
+  } catch (err) {
+    console.warn(`Overpass mirror failed: ${url}`, err.code);
+  }
+}
+
+if (!overpassRes) {
+  return res.status(500).json({ error: 'All Overpass API mirrors failed' });
+}
+
 
     const results = await Promise.all(
       overpassRes.data.elements.map(async (place) => {
