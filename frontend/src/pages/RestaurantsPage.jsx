@@ -18,7 +18,7 @@ const RestaurantsPage = () => {
       setLoading(true);
       try {
         const response = await fetch(
-          `http://localhost:5000/api/restaurants/search?location=${encodeURIComponent(location)}`
+          `https://dine-spot-mern-app.onrender.com/api/restaurants/search?location=${encodeURIComponent(location)}`
         );
 
         if (!response.ok) throw new Error('Failed to fetch');
