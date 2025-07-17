@@ -55,7 +55,7 @@ const Register = () => {
 
   return (
     <div style={styles.backgroundWrapper}>
-      <div style={{ ...styles.blurOverlay, backgroundImage: `url(${bgImage})` }} />
+      <div style={{ ...styles.blurOverlay }} />
       <div style={styles.formContainer}>
         <h2 style={styles.heading}>Register here !</h2>
         {/* {error && <p style={styles.error}>{error}</p>} */}

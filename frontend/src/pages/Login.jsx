@@ -51,16 +51,12 @@ const Login = () => {
   };
 
   return (
-    // <div style={{
-    //   height: '100vh',
-    //   backgroundImage: `url(${bgImage})`,
-    //   backgroundSize: 'cover',
-    //   backgroundPosition: 'center',
-    //   display: 'flex',
-    //   justifyContent: 'center',
-    //   alignItems: 'center',
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
       
-    // }}>
+    }}>
       <div style={{
         backgroundColor: '#fff',
         borderRadius: '25px',
@@ -200,6 +196,7 @@ const Login = () => {
             </button>
           </div>
         </form>
+      </div>
       </div>
   );
 };
