@@ -143,9 +143,12 @@ if (!overpassRes) {
 
 };
 
-export const getRestaurantById = async (req, res) => {
+  export const getRestaurantById = async (req, res) => {
+  const { id } = req.params;
+
+  console.log(id,"id")
   try {
-    const restaurant = await Restaurant.findById(req.params.id);
+    const restaurant = await Restaurant.findOne({ _id:id });
     if (!restaurant) {
       return res.status(404).json({ error: 'Restaurant not found' });
     }
@@ -155,7 +158,6 @@ export const getRestaurantById = async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
-
 //  Add or update menu for a restaurant
 export const addMenu = async (req, res) => {
   const { restaurantId } = req.params;

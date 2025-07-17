@@ -11,7 +11,9 @@ const { searchRestaurants,getRestaurantById } = require('../controllers/restaura
 const { addMenu } =require('../controllers/restaurantController');
 
 router.get('/search', searchRestaurants); // NOT /location
-router.get('/:id', getRestaurantById);
+router.get('/by-osm/:id', getRestaurantById);
 router.put('/:restaurantId/menu', addMenu);
+ 
+ 
 
 module.exports = router;

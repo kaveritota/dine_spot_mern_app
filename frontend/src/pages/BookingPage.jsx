@@ -12,7 +12,7 @@ const BookingPage = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/restaurants/${id}`);
+        const res = await fetch(` http://localhost:5000/api/restaurants/by-osm/68736975bc92e1614c4d17d8/${id}`);
         const data = await res.json();
         setRestaurant(data);
       } catch (err) {
@@ -29,7 +29,7 @@ const BookingPage = () => {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <BookingForm restaurant={restaurant} onClose={() => navigate('/')} />
+      <BookingForm restaurant={restaurant} onClose={() => navigate('/home')} />
     </div>
   );
 };
