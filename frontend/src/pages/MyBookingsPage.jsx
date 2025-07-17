@@ -7,12 +7,12 @@ const MyBookingsPage = () => {
   const [loading, setLoading] = useState(true);
 
   // Replace this with actual logged-in user ID or email if available
-  const userEmail = localStorage.getItem('userEmail'); // Or from context/auth
+  const userEmail = localStorage.getItem('email'); // Or from context/auth
 
   useEffect(() => {
     const fetchBookings = async () => {
       try {
-        const res = await axios.get(` https://dine-spot-mern-app.onrender.com/api/bookings/user/${userEmail}`);
+        const res = await axios.get(`https://dine-spot-mern-app.onrender.com/api/bookings/${userEmail}`);
         setBookings(res.data);
       } catch (error) {
         console.error('Failed to fetch bookings:', error);
