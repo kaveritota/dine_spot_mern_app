@@ -17,7 +17,7 @@ const BookingPage = () => {
         setRestaurant(data);
       } catch (err) {
         console.error(err);
-        navigate('/');
+        navigate('/home');
       } finally {
         setLoading(false);
       }
