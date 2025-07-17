@@ -17,7 +17,7 @@ const BookingPage = () => {
         setRestaurant(data);
       } catch (err) {
         console.error(err);
-        alert('Failed to fetch restaurant details');
+        // alert('Failed to fetch restaurant details');
         navigate('/');
       } finally {
         setLoading(false);
