@@ -12,7 +12,7 @@ const BookingPage = () => {
   useEffect(() => {
     const fetchRestaurant = async () => {
       try {
-        const res = await fetch(` http://localhost:5000/api/restaurants/by-osm/68736975bc92e1614c4d17d8/${id}`);
+        const res = await fetch(`https://dine-spot-mern-app.onrender.com/api/restaurants/by-osm/${id}`);
         const data = await res.json();
         setRestaurant(data);
       } catch (err) {
