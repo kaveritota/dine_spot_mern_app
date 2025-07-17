@@ -29,6 +29,7 @@ const Login = () => {
 
       localStorage.setItem('userToken', data.token);
       alert('Login successful!');
+      localStorage.setItem("email",email)
       navigate('/home');
     } catch (err) {
       setError(err.message);
