@@ -6,6 +6,8 @@ import dotenv from 'dotenv';
 import customerRoutes from './customer/routers/customerRouters.js';
 import restaurantRoutes from './restaurant/routers/searchRestaurants.js';
 import bookingRoutes from './restaurant/routers/bookingRoutes.js';
+import axios from 'axios';
+
 //track the backend ....
 dotenv.config();
 const app = express();
@@ -19,7 +21,7 @@ app.use('/api/restaurants', restaurantRoutes);
 app.use('/api/bookings', bookingRoutes);
 
 app.get('/', (req, res) => res.send('Welcome to DineSpot backend'));
-router.get('/test-overpass', async (req, res) => {
+app.get('/test-overpass', async (req, res) => {
   try {
     const query = `
       [out:json];
