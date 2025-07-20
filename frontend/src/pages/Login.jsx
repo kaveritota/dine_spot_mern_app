@@ -1,21 +1,23 @@
-  import React, { useState } from 'react';
+ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
 import { FcGoogle } from 'react-icons/fc';
-import bgImage from '../assets/Background.png';  
 import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from '../firebase'; 
+import { auth, provider } from '../firebase';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPwd, setShowPwd] = useState(false);
   const [error, setError] = useState('');
+  const [isHovered, setIsHovered] = useState(false); // for hover effect
+
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setError('');
+    console.log('Attempting login with email/password...');
 
     try {
       const res = await fetch('https://dine-spot-mern-app.onrender.com/api/customers/login', {
@@ -25,13 +27,16 @@ const Login = () => {
       });
 
       const data = await res.json();
+      console.log('Login response:', data);
+
       if (!res.ok) throw new Error(data.error || 'Login failed');
 
       localStorage.setItem('userToken', data.token);
+      localStorage.setItem("email", email);
       alert('Login successful!');
-      localStorage.setItem("email",email)
       navigate('/home');
     } catch (err) {
+      console.error('Login error:', err);
       setError(err.message);
     }
   };
@@ -42,12 +47,13 @@ const Login = () => {
       const user = result.user;
       const token = await user.getIdToken();
 
+      console.log('Google user:', user);
       localStorage.setItem('userToken', token);
       alert('Google login successful!');
       navigate('/');
     } catch (error) {
-      setError('Google Sign-in failed');
-      console.error(error);
+      console.error('Google login error:', error.code, error.message);
+      setError(error.message || 'Google Sign-in failed');
     }
   };
 
@@ -56,7 +62,6 @@ const Login = () => {
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      
     }}>
       <div style={{
         backgroundColor: '#fff',
@@ -65,11 +70,11 @@ const Login = () => {
         width: '65%',
         maxWidth: '400px',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.1)',
-        height:'500px',
-        marginTop:'90px',
+        height: '500px',
+        marginTop: '90px',
       }}>
-        <h2 style={{ textAlign: 'center', marginBottom: '10px', fontSize: '24px', fontWeight: 500 ,color:'#cd5d0dff'}}>Welcome!</h2>
-        <p style={{ textAlign: 'center', color: '#040609ff', marginBottom: '20px' }}>Already have an account? Login </p>
+        <h2 style={{ textAlign: 'center', marginBottom: '10px', fontSize: '24px', fontWeight: 500, color: '#cd5d0dff' }}>Welcome!</h2>
+        <p style={{ textAlign: 'center', color: '#040609ff', marginBottom: '20px' }}>Already have an account? Login</p>
 
         {error && (
           <p style={{ color: 'red', textAlign: 'center', marginBottom: '15px', fontWeight: 500 }}>{error}</p>
@@ -88,7 +93,7 @@ const Login = () => {
               borderRadius: '4px',
               border: '1px solid #121316ff',
               outline: 'none',
-              width:'100%'
+              width: '100%'
             }}
           />
 
@@ -140,17 +145,21 @@ const Login = () => {
             </button>
           </div>
 
+          {/* Login button with hover effect */}
           <button
             type="submit"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
             style={{
               padding: '12px',
-              backgroundColor: '#cd5d0dff',
+              backgroundColor: isHovered ? '#a84800' : '#cd5d0dff', // hover effect
               color: '#fff',
               border: 'none',
               borderRadius: '4px',
               fontWeight: 'bold',
               fontSize: '16px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              transition: 'background-color 0.3s ease'
             }}
           >
             Login
@@ -198,8 +207,8 @@ const Login = () => {
           </div>
         </form>
       </div>
-      </div>
+    </div>
   );
 };
 
-export default Login;     
+export default Login;
