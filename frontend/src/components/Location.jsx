@@ -13,20 +13,20 @@ const Locations = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState('');
 
-  const handleLocationClick = async (locationName) => {
-    setSelectedLocation(locationName);
-    setRestaurants([]);
-    setError('');
+  // const handleLocationClick = async (locationName) => {
+  //   setSelectedLocation(locationName);
+  //   setRestaurants([]);
+  //   setError('');
 
-    try {
-      const response = await fetch(`http://localhost:5000/api/restaurants/search?location=${encodeURIComponent(locationName)}`);
-      const data = await response.json();
-      console.log("Fetched data:", data);
-      setRestaurants(data.restaurants || []);
-    } catch (err) {
-      setError('Failed to fetch restaurants. Please try again later.');
-    }
-  };
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/api/restaurants/search?location=${encodeURIComponent(locationName)}`);
+  //     const data = await response.json();
+  //     console.log("Fetched data:", data);
+  //     setRestaurants(data.restaurants || []);
+  //   } catch (err) {
+  //     setError('Failed to fetch restaurants. Please try again later.');
+  //   }
+  // };
 
   return (
     <div style={styles.wrapper}>

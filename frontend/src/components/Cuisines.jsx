@@ -17,19 +17,19 @@ const Cuisines = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState('');
 
-  const handleCuisineClick = async (cuisine) => {
-    setSelectedCuisine(cuisine);
-    setRestaurants([]);
-    setError('');
+  // const handleCuisineClick = async (cuisine) => {
+  //   setSelectedCuisine(cuisine);
+  //   setRestaurants([]);
+  //   setError('');
 
-    try {
-      const response = await fetch(`http://localhost:5000/api/restaurants/cuisine/${cuisine}`);
-      const data = await response.json();
-      setRestaurants(data.restaurants || []);
-    } catch (err) {
-      setError('Failed to fetch restaurants.');
-    }
-  };
+  //   try {
+  //     const response = await fetch(`http://localhost:5000/api/restaurants/cuisine/${cuisine}`);
+  //     const data = await response.json();
+  //     setRestaurants(data.restaurants || []);
+  //   } catch (err) {
+  //     setError('Failed to fetch restaurants.');
+  //   }
+  // };
 
   return (
     <div style={styles.wrapper}>
