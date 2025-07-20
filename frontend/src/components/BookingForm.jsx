@@ -55,7 +55,7 @@ const BookingForm = ({ restaurant, onClose }) => {
         restaurantName: restaurant.name,
       };
 
-      const res = await axios.post('http://localhost:5000/api/bookings', bookingData);
+      const res = await axios.post('https://dine-spot-mern-app.onrender.com/api/bookings', bookingData);
 
       alert(`Booking confirmed for ${form.time}!`);
 
