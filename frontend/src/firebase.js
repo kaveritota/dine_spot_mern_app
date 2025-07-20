@@ -2,11 +2,11 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 
-const firebaseConfig = {
+ const firebaseConfig = {
   apiKey: "AIzaSyAw0wF_D6C1fBKuXXSC_iAzpvcuFySeT-o",
-  authDomain: "dinespot-44921.firebaseapp.com",   //Add `.firebaseapp.com`
-  projectId: "dinespot-44921",                    //Required for Firebase Auth
-  storageBucket: "dinespot-44921.appspot.com",    //Correct domain for storage
+  authDomain: "dinespot-44921.firebaseapp.com",
+  projectId: "dinespot-44921",
+  storageBucket: "dinespot-44921.firebasestorage.app",
   messagingSenderId: "957024982642",
   appId: "1:957024982642:web:78a2919fe775c77d9ed4eb",
   measurementId: "G-6GTS2J9DWX"
