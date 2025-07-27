@@ -5,8 +5,8 @@ const express = require('express');
 
 const router = express.Router();
 
-router.post('/register', customer.registerCustomer);
-router.post('/login', customer.loginCustomer);
+router.post('/register',registerCustomer);
+router.post('/login',loginCustomer);
 router.post("/forgot-password", forgotPassword);
 router.post("/reset-password", resetPassword);
 

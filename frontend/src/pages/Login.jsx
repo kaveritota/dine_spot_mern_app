@@ -131,7 +131,7 @@ const Login = () => {
           <div style={{ textAlign: 'right' }}>
             <button
               type="button"
-              onClick={() => navigate('/')}
+              onClick={() => navigate('/forgot-password')}
               style={{
                 background: 'none',
                 border: 'none',
