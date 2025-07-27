@@ -21,7 +21,15 @@ const customerSchema = new mongoose.Schema({
   phone: {
     type: String,
     required: true
-  }
+  },
+   resetToken: {
+     type: String
+     },
+  resetTokenExpiry: 
+  { 
+    type: Date
+   },
+ 
 });
 
 // Hash password before saving

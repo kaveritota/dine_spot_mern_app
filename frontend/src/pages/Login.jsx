@@ -10,8 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [showPwd, setShowPwd] = useState(false);
   const [error, setError] = useState('');
-  const [isHovered, setIsHovered] = useState(false); // for hover effect
-
+  const [isHovered, setIsHovered] = useState(false);  
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
@@ -132,7 +131,7 @@ const Login = () => {
           <div style={{ textAlign: 'right' }}>
             <button
               type="button"
-              onClick={() => navigate('/forgot-password')}
+              onClick={() => navigate('/')}
               style={{
                 background: 'none',
                 border: 'none',
@@ -144,15 +143,13 @@ const Login = () => {
               Forgot password?
             </button>
           </div>
-
-          {/* Login button with hover effect */}
           <button
             type="submit"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
             style={{
               padding: '12px',
-              backgroundColor: isHovered ? '#a84800' : '#cd5d0dff', // hover effect
+              backgroundColor: isHovered ? '#a84800' : '#cd5d0dff', 
               color: '#fff',
               border: 'none',
               borderRadius: '4px',

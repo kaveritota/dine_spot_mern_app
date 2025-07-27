@@ -9,11 +9,13 @@ import BookingPage from './pages/BookingPage';
 import PaymentPage from './pages/PaymentPage';
 import MyBookingsPage from './pages/MyBookingsPage';
 import ThankYou from './pages/ThankYou';
+import ForgotPassword from "./pages/ForgotPassword";
+import ResetPassword from "./pages/ResetPassword";
 
 function App() {
   const location = useLocation();
 
-  const hideNavbarRoutes = ['/', '/register'];
+  const hideNavbarRoutes = ['/', '/register','/forgot-password'];
 
   return (
     <>
@@ -21,6 +23,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
         <Route path="/home" element={<Home/>}/>
         <Route path="/restaurants" element={<RestaurantPage />} />
         <Route path="/book/:id" element={<BookingPage />} />
@@ -32,10 +36,7 @@ function App() {
         <Route path="/thank-you" element={<ThankYou/>}/>
       </Routes>
 
-      {/* Optional: Keep this always visible */}
-      {/* <div>
-        <AddRestaurantForm />
-      </div> */}
+       
     </>
   );
 }
