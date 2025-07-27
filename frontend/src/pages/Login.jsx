@@ -50,7 +50,7 @@ const Login = () => {
       console.log('Google user:', user);
       localStorage.setItem('userToken', token);
       alert('Google login successful!');
-      navigate('/');
+      navigate('/home');
     } catch (error) {
       console.error('Google login error:', error.code, error.message);
       setError(error.message || 'Google Sign-in failed');
