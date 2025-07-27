@@ -1,5 +1,10 @@
  const Customer = require('../models/customer');
 const jwt = require('jsonwebtoken');
+const crypto = require('crypto');
+const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+
+
 
 // Register a new customer
 exports.registerCustomer = async (req, res) => {
@@ -48,11 +53,8 @@ exports.loginCustomer = async (req, res) => {
     res.status(500).json({ error: 'Error logging in customer', details: err.message });
   }
 };
-const Customer = require('../models/customer');
-const crypto = require('crypto');
-const bcrypt = require('bcryptjs');
-const nodemailer = require('nodemailer');
-
+ 
+ 
 // Forgot Password
 exports.forgotPassword = async (req, res) => {
   try {
@@ -78,7 +80,7 @@ exports.forgotPassword = async (req, res) => {
       },
     });
 
-    const resetLink = `http://localhost:3000/reset-password/${resetToken}`;
+     const resetLink = `${process.env.FRONTEND_URL}/reset-password/${resetToken}`;
 
     await transporter.sendMail({
       to: email,
